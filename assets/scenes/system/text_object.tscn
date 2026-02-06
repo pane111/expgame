@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dof77k72bt16k"]
+
+[ext_resource type="Script" uid="uid://2k0kkq6e0tvj" path="res://assets/scenes/system/text_object.gd" id="1_5qola"]
+[ext_resource type="Texture2D" uid="uid://b740drho70ncc" path="res://assets/sprites/sign.png" id="1_pu6e4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytpj3"]
+size = Vector2(24, 24)
+
+[node name="TextObject" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_5qola")
+text_to_display = "Today marks the day where someone will read this sign.
+
+How splendid!"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Interactable"]]
+shape = SubResource("RectangleShape2D_ytpj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pu6e4")

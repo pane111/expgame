@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkqyyuc2k138l"]
+
+[ext_resource type="Texture2D" uid="uid://dgkmyicaoetxh" path="res://assets/sprites/bloodstain.png" id="1_7re2f"]
+
+[node name="Bloodstain" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_7re2f")
+offset = Vector2(0, 10)

@@ -1,0 +1,22 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=9 format=3 uid="uid://btakvuudn3o2x"]
+
+[ext_resource type="AudioStream" uid="uid://c52qiqlo2yq2o" path="res://assets/audio/sfx/BB_GoreHit-001.wav" id="1_o384g"]
+[ext_resource type="AudioStream" uid="uid://yprna8c565nl" path="res://assets/audio/sfx/BB_GoreHit-002.wav" id="2_qy7n5"]
+[ext_resource type="AudioStream" uid="uid://yni5qt8mqtit" path="res://assets/audio/sfx/BB_GoreHit-003.wav" id="3_lh0o4"]
+[ext_resource type="AudioStream" uid="uid://d05vkr6eaxuf" path="res://assets/audio/sfx/BB_GoreHit-004.wav" id="4_y3cwf"]
+[ext_resource type="AudioStream" uid="uid://dcasgpt61ewjk" path="res://assets/audio/sfx/BB_GoreHit-005.wav" id="5_2lfyk"]
+[ext_resource type="AudioStream" uid="uid://bhvqhiqi1flf5" path="res://assets/audio/sfx/BB_GoreHit-006.wav" id="6_2p7m7"]
+[ext_resource type="AudioStream" uid="uid://h5o7gq4y26cy" path="res://assets/audio/sfx/BB_GoreHit-007.wav" id="7_pt1nd"]
+[ext_resource type="AudioStream" uid="uid://b1ld084lpred6" path="res://assets/audio/sfx/BB_GoreHit-008.wav" id="8_qyjbp"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 8
+stream_0/stream = ExtResource("1_o384g")
+stream_1/stream = ExtResource("2_qy7n5")
+stream_2/stream = ExtResource("3_lh0o4")
+stream_3/stream = ExtResource("4_y3cwf")
+stream_4/stream = ExtResource("5_2lfyk")
+stream_5/stream = ExtResource("6_2p7m7")
+stream_6/stream = ExtResource("7_pt1nd")
+stream_7/stream = ExtResource("8_qyjbp")

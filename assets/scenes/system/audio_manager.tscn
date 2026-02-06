@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqxvfoetnjuob"]
+
+[ext_resource type="AudioStream" uid="uid://c5iwbn3f1gag1" path="res://assets/audio/music/random_music.tres" id="1_eleqn"]
+[ext_resource type="Script" uid="uid://dvodsvewi2av4" path="res://assets/scenes/system/audio_manager.gd" id="1_eo52j"]
+[ext_resource type="AudioStream" uid="uid://dlg88l04u63p8" path="res://assets/audio/music/creepy.ogg" id="2_mxro1"]
+[ext_resource type="AudioStream" uid="uid://cf216873uvo47" path="res://assets/audio/sfx/accept_scifi.wav" id="4_hgx21"]
+[ext_resource type="AudioStream" uid="uid://bafml7ihi06y2" path="res://assets/audio/sfx/select_scifi.wav" id="5_kn4u0"]
+
+[node name="AudioManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eo52j")
+title_music = ExtResource("2_mxro1")
+random_music = ExtResource("1_eleqn")
+
+[node name="MusicLayer1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_eleqn")
+bus = &"Music"
+
+[node name="MusicLoopTimer" type="Timer" parent="."]
+
+[node name="Accept" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hgx21")
+volume_db = 1.0
+max_polyphony = 4
+bus = &"SFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kn4u0")
+volume_db = -5.0
+max_polyphony = 4
+bus = &"SFX"
+
+[connection signal="timeout" from="MusicLoopTimer" to="." method="crossfade"]

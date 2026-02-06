@@ -1,0 +1,19 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=8 format=3 uid="uid://c5iwbn3f1gag1"]
+
+[ext_resource type="AudioStream" uid="uid://1sqiqdxaek1a" path="res://assets/audio/music/city.ogg" id="1_t3lon"]
+[ext_resource type="AudioStream" uid="uid://dlg88l04u63p8" path="res://assets/audio/music/creepy.ogg" id="2_tsjnv"]
+[ext_resource type="AudioStream" uid="uid://bt33gwoi587nb" path="res://assets/audio/music/happy.ogg" id="3_yhoj4"]
+[ext_resource type="AudioStream" uid="uid://33f8p108jdy0" path="res://assets/audio/music/Enlightenment.ogg" id="4_multg"]
+[ext_resource type="AudioStream" uid="uid://c6yhynukt0y32" path="res://assets/audio/music/MyCoolSong.ogg" id="5_qd0po"]
+[ext_resource type="AudioStream" uid="uid://c7vdkov25y4uj" path="res://assets/audio/music/Apocalypse.ogg" id="6_cit1a"]
+[ext_resource type="AudioStream" uid="uid://c4suoup80ar5a" path="res://assets/audio/music/rock.ogg" id="7_qd0po"]
+
+[resource]
+streams_count = 7
+stream_0/stream = ExtResource("1_t3lon")
+stream_1/stream = ExtResource("2_tsjnv")
+stream_2/stream = ExtResource("3_yhoj4")
+stream_3/stream = ExtResource("4_multg")
+stream_4/stream = ExtResource("5_qd0po")
+stream_5/stream = ExtResource("6_cit1a")
+stream_6/stream = ExtResource("7_qd0po")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://djhptslejnsqh"]
+
+[ext_resource type="Script" uid="uid://b2e0fqd5lr5fj" path="res://addons/pjdialogue/PJDialogueMain.gd" id="1_i0gsf"]
+
+[node name="PJD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_i0gsf")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DiaContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+anchor_right = 0.1734375
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextEdit" type="TextEdit" parent="UI"]
+layout_mode = 0
+anchor_left = 0.1859375
+anchor_top = 0.30625
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="NameEdit" type="TextEdit" parent="UI"]
+layout_mode = 0
+anchor_left = 0.1859375
+anchor_top = 0.25
+anchor_right = 0.4375
+anchor_bottom = 0.3
+metadata/_edit_use_anchors_ = true
+
+[node name="SaveBtn" type="Button" parent="UI"]
+layout_mode = 0
+anchor_left = 0.4484375
+anchor_top = 0.25208333
+anchor_right = 0.6046875
+anchor_bottom = 0.3
+offset_bottom = -2.0
+text = "Save"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="UI/SaveBtn" to="." method="_on_save_btn_pressed"]

@@ -1,0 +1,264 @@
+[gd_scene load_steps=19 format=3 uid="uid://besma585qdo2"]
+
+[ext_resource type="Script" uid="uid://5sv0ewih1jie" path="res://assets/scenes/system/game_manager.gd" id="1_k55o1"]
+[ext_resource type="Texture2D" uid="uid://dfl5xeg8r2708" path="res://assets/bgs/city_posterized.png" id="3_3pr6o"]
+[ext_resource type="Texture2D" uid="uid://8xrguvyx5hqp" path="res://assets/portraits/heartyouguy.png" id="3_tugpy"]
+[ext_resource type="AudioStream" uid="uid://y4asjni1nkq6" path="res://assets/audio/sfx/click.tres" id="4_aakag"]
+[ext_resource type="PackedScene" uid="uid://cpsoi30xei7ep" path="res://assets/scenes/system/player.tscn" id="4_tugpy"]
+[ext_resource type="PackedScene" uid="uid://d02hq07eis037" path="res://assets/scenes/system/title_screen.tscn" id="4_wbfgt"]
+[ext_resource type="Shader" uid="uid://c0jgt1rbd4vqb" path="res://assets/scenes/system/scroll.gdshader" id="5_3pr6o"]
+[ext_resource type="Texture2D" uid="uid://bta8eut65g2gc" path="res://assets/sprites/scrolling_bg.png" id="5_cft48"]
+[ext_resource type="PackedScene" uid="uid://dt2v2kpbgn865" path="res://assets/scenes/areas/test_area.tscn" id="5_f6aov"]
+[ext_resource type="Texture2D" uid="uid://chuovkrid61o4" path="res://assets/other/smoke.png" id="10_40ew7"]
+[ext_resource type="Texture2D" uid="uid://0kj61x6nwfe3" path="res://assets/other/smoke2.png" id="10_vcuah"]
+[ext_resource type="Shader" uid="uid://k4wdqmvgmto3" path="res://assets/scenes/system/smoke.gdshader" id="10_wyli8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcuah"]
+shader = ExtResource("10_wyli8")
+shader_parameter/direction = Vector2(1, -0.6)
+shader_parameter/speed = 0.02
+shader_parameter/w_stren = 0.05
+shader_parameter/w_speed = 0.2
+shader_parameter/w_freq = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tugpy"]
+texture = ExtResource("3_3pr6o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aakag"]
+texture = ExtResource("3_tugpy")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pr6o"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbfgt"]
+shader = ExtResource("5_3pr6o")
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/speed = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6aov"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_k55o1")
+progress = 1.0
+increment = 0.35
+initial_coughtimer = 100.0
+clicksound = ExtResource("4_aakag")
+playerScn = ExtResource("4_tugpy")
+title_screen = ExtResource("4_wbfgt")
+start_area = ExtResource("5_f6aov")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Smoke2" type="TextureRect" parent="UI"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.32156864)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_vcuah")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_vcuah")
+metadata/_edit_use_anchors_ = true
+
+[node name="Smoke" type="TextureRect" parent="UI"]
+self_modulate = Color(1, 1, 1, 0.5058824)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_vcuah")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_40ew7")
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+visible = false
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.039583333
+grow_horizontal = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Dialogue" type="Panel" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogueBG" type="Panel" parent="UI/Dialogue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tugpy")
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogueChar" type="Panel" parent="UI/Dialogue/DialogueBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_aakag")
+metadata/_edit_use_anchors_ = true
+
+[node name="Text1" type="Label" parent="UI/Dialogue"]
+layout_mode = 0
+anchor_left = 0.09375
+anchor_top = 0.027083334
+anchor_right = 0.6395834
+anchor_bottom = 0.3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "Lorem ipsum placeholder text awdgawzdg awdhjgawzudg kawdz awdgzauwdguza"
+autowrap_mode = 2
+visible_characters_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Text2" type="Label" parent="UI/Dialogue"]
+layout_mode = 0
+anchor_left = 0.409375
+anchor_top = 0.3
+anchor_right = 0.9552084
+anchor_bottom = 0.5729167
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "Lorem ipsum placeholder text awdgawzdg awdhjgawzudg kawdz awdgzauwdguza"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Text3" type="Label" parent="UI/Dialogue"]
+layout_mode = 0
+anchor_left = 0.1140625
+anchor_top = 0.70208335
+anchor_right = 0.6598959
+anchor_bottom = 0.975
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "Lorem ipsum placeholder text awdgawzdg awdhjgawzudg kawdz awdgzauwdguza"
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="UI"]
+bus = &"Music"
+
+[node name="UI_SFX" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("4_aakag")
+bus = &"SFX"
+
+[node name="TextPanel" type="Panel" parent="UI"]
+custom_minimum_size = Vector2(248, 248)
+anchors_preset = -1
+anchor_left = 0.30625
+anchor_top = 0.24166666
+anchor_right = 0.69375
+anchor_bottom = 0.7583333
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3pr6o")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextBG" type="TextureRect" parent="UI/TextPanel"]
+self_modulate = Color(1, 1, 1, 0.3764706)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_wbfgt")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30625
+anchor_top = 0.24166666
+anchor_right = 0.69375
+anchor_bottom = 0.7583333
+offset_left = -75.950005
+offset_top = -59.93333
+offset_right = 75.95
+offset_bottom = 59.933334
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cft48")
+metadata/_edit_use_anchors_ = true
+
+[node name="SignText" type="Label" parent="UI/TextPanel"]
+custom_minimum_size = Vector2(248, 248)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.005557924
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(6.016344e-07, 0, 0.3113641, 1)
+theme_override_constants/outline_size = 3
+text = "Test text"
+autowrap_mode = 3
+visible_characters_behavior = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BlackFade" type="Panel" parent="UI"]
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
+z_index = 9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f6aov")
+metadata/_edit_use_anchors_ = true
+
+[node name="EndingText" type="Label" parent="UI/BlackFade"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "ENDING A:
+DEATH"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="IncrementProgress" type="Timer" parent="."]
+autostart = true
+
+[node name="ClickingTimer" type="Timer" parent="."]
+wait_time = 0.07
+
+[node name="MainCam" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+position_smoothing_enabled = true
+
+[connection signal="timeout" from="IncrementProgress" to="." method="_on_increment_progress_timeout"]
+[connection signal="timeout" from="ClickingTimer" to="." method="_on_clicking_timer_timeout"]

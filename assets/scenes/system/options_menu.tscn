@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2npk7g1v4h4j"]
+
+[ext_resource type="Shader" uid="uid://c0jgt1rbd4vqb" path="res://assets/scenes/system/scroll.gdshader" id="1_w0c7j"]
+[ext_resource type="Script" uid="uid://d3sxt0baus633" path="res://assets/scenes/system/options_menu.gd" id="1_yvdsl"]
+[ext_resource type="Texture2D" uid="uid://bta8eut65g2gc" path="res://assets/sprites/scrolling_bg.png" id="2_yvdsl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nknn"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wi4w6"]
+shader = ExtResource("1_w0c7j")
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/speed = 0.1
+
+[node name="OptionsMenu" type="CanvasLayer"]
+script = ExtResource("1_yvdsl")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionPanel" type="Panel" parent="Control"]
+visible = false
+z_index = 99
+custom_minimum_size = Vector2(248, 248)
+layout_mode = 1
+offset_left = -124.0
+offset_top = -124.0
+offset_right = 124.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7nknn")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextBG" type="TextureRect" parent="Control/OptionPanel"]
+self_modulate = Color(1, 1, 1, 0.3764706)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_wi4w6")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30625
+anchor_top = 0.24166666
+anchor_right = 0.69375
+anchor_bottom = 0.7583333
+offset_left = -75.950005
+offset_top = -59.93333
+offset_right = 75.95
+offset_bottom = 59.933334
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yvdsl")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/OptionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="Control/OptionPanel/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+metadata/_edit_use_anchors_ = true
+
+[node name="MasterSlider" type="HSlider" parent="Control/OptionPanel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control/OptionPanel/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+metadata/_edit_use_anchors_ = true
+
+[node name="MusicSlider" type="HSlider" parent="Control/OptionPanel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="Label2" type="Label" parent="Control/OptionPanel/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+metadata/_edit_use_anchors_ = true
+
+[node name="SFXSlider" type="HSlider" parent="Control/OptionPanel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CloseOpt" type="Button" parent="Control/OptionPanel/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[node name="Status" type="Label" parent="Control/OptionPanel/VBoxContainer"]
+layout_mode = 2
+text = "(DEBUG) Status: 0"
+
+[connection signal="value_changed" from="Control/OptionPanel/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Control/OptionPanel/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Control/OptionPanel/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Control/OptionPanel/VBoxContainer/CloseOpt" to="." method="_on_close_opt_pressed"]
