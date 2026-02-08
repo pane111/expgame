@@ -49,9 +49,8 @@ bg_color = Color(1, 1, 1, 1)
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_k55o1")
-progress = 1.0
-increment = 0.35
-initial_coughtimer = 100.0
+increment = 0.25
+initial_coughtimer = 90.0
 clicksound = ExtResource("4_aakag")
 playerScn = ExtResource("4_tugpy")
 title_screen = ExtResource("4_wbfgt")

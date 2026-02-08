@@ -316,7 +316,7 @@ bus = &"SFX"
 
 [node name="Footstep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_npvja")
-volume_db = -7.0
+volume_db = -5.5
 bus = &"SFX"
 
 [connection signal="frame_changed" from="CSprite" to="." method="_on_c_sprite_frame_changed"]

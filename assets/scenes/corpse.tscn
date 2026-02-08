@@ -1,0 +1,30 @@
+[gd_scene load_steps=11 format=3 uid="uid://myi1xrh84ch2"]
+
+[ext_resource type="Script" uid="uid://crs6qlpx07t8m" path="res://assets/scenes/corpse.gd" id="1_va274"]
+[ext_resource type="Texture2D" uid="uid://7jogtsk73ep2" path="res://assets/sprites/corpse_1.png" id="2_m0c1c"]
+[ext_resource type="Texture2D" uid="uid://d4c4eggsa3drb" path="res://assets/sprites/corpses.png" id="2_va274"]
+[ext_resource type="Texture2D" uid="uid://dgve104loe8sq" path="res://assets/sprites/corpse_2.png" id="3_v6vix"]
+[ext_resource type="Texture2D" uid="uid://pf0v6eaa87kx" path="res://assets/sprites/corpse_3.png" id="4_edevd"]
+[ext_resource type="Texture2D" uid="uid://ek5j83l4wqw1" path="res://assets/sprites/corpse_4.png" id="5_vxoin"]
+[ext_resource type="Texture2D" uid="uid://oxp3bdovif77" path="res://assets/sprites/corpse_5.png" id="6_l606v"]
+[ext_resource type="Texture2D" uid="uid://cstxd5cffriic" path="res://assets/sprites/corpse_6.png" id="7_x6esy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytpj3"]
+size = Vector2(24, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5vra"]
+atlas = ExtResource("2_va274")
+region = Rect2(0, 0, 24, 32)
+
+[node name="Corpse" type="StaticBody2D" groups=["Interactable"]]
+collision_layer = 2
+script = ExtResource("1_va274")
+textures = Array[Texture]([ExtResource("2_m0c1c"), ExtResource("3_v6vix"), ExtResource("4_edevd"), ExtResource("5_vxoin"), ExtResource("6_l606v"), ExtResource("7_x6esy")])
+text_to_display = "No response..."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Interactable"]]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ytpj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_j5vra")

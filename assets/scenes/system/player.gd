@@ -22,8 +22,8 @@ func _set_input(val):
 	input_enabled.emit()
 
 func _ready() -> void:
-	handle_input=false
-	await anim.animation_finished
+	##handle_input=false
+	##await anim.animation_finished
 	##GameManager.start_dialogue("FirstGuy",load("uid://d4agx60c7xqtr"))
 	handle_input=true
 	lastdir = Vector2.DOWN

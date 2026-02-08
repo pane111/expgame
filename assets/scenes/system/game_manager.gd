@@ -155,7 +155,7 @@ func _on_increment_progress_timeout() -> void:
 	if player == null: return
 	if player.handle_input == false: return
 	progress += increment * player.speedmult
-	
+	player.severity = progress
 	var ctime = initial_coughtimer-(progress*coughtimer_reduction)
 	if ctime < 11: ctime=11
 	if progress >= 100:
@@ -171,6 +171,7 @@ func _on_increment_progress_timeout() -> void:
 			player.cough()
 			player.timer.stop()
 			player.timer.start()
+			progress+=1
 	player.timer.wait_time = ctime
 	player.severity = progress
 	OptionsMenu.set_status("Status: " + str(round(progress)))

@@ -19,10 +19,10 @@ func _on_play_btn_pressed() -> void:
 	AudioManager.play_accept()
 	$CanvasLayer.hide()
 	AudioManager.crossfade()
-	await get_tree().create_timer(5).timeout
+	##await get_tree().create_timer(5).timeout
 	GameManager.load_new_area(GameManager.start_area,Vector2(140,150))
 	
-	GameManager.fade_black_out(5)
+	GameManager.fade_black_out(1)
 	self.queue_free()
 
 
